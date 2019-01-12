@@ -1,4 +1,8 @@
+resolvers += "Flyway" at "https://davidmweber.github.io/flyway-sbt.repo"
+
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.21")
+
+addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.2.0")
 
 // Defines scaffolding (found under .g8 folder)
 // http://www.foundweekends.org/giter8/scaffolding.html
