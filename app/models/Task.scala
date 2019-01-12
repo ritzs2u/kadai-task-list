@@ -20,7 +20,7 @@ object Task extends SkinnyCRUDMapper[Task] {
     autoConstruct(rs, n)
 
   private def toNamedValues(record: Task): Seq[(Symbol, Any)] = Seq(
-    'body     -> record.body,
+    'content  -> record.content,
     'createAt -> record.createAt,
     'updateAt -> record.updateAt
   )
