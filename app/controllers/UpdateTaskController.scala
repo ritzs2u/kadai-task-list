@@ -17,7 +17,7 @@ class UpdateTaskController @Inject()(components: ControllerComponents)
 
   def index(taskId: Long): Action[AnyContent] = Action { implicit request =>
     val result     = Task.findById(taskId).get
-    val filledForm = form.fill(TaskForm(result.id, result.content))
+    val filledForm = form.fill(TaskForm(result.id, result.status.getOrElse(""), result.content))
     Ok(views.html.edit(filledForm))
   }
 
@@ -31,6 +31,7 @@ class UpdateTaskController @Inject()(components: ControllerComponents)
             .updateById(model.id.get)
             .withAttributes(
               'content     -> model.content,
+              'status -> model.status,
               'updateAt -> ZonedDateTime.now()
             )
           if (result > 0)
